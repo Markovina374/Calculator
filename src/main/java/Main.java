@@ -14,5 +14,7 @@ public class Main {
         } catch (EmptyStackException e) {
             throw new InvalidExpression("Некорректное выражение! В выражении не должно быть букв! И оно не должно быть пустым.");
         }
+
     }
+
 }
