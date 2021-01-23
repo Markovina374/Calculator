@@ -1,11 +1,13 @@
-import Exceptions.InvalidExpression;
 
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Stack;
 
 public class ExpressionParser {
 
 
-    public static String parseExpressionInReversePolandNotation(String expression) {
+    public static ArrayList<String> parseExpressionInReversePolandNotation(String expression) {
 
         StringBuilder parsedString = new StringBuilder();
         Stack<Character> stack = new Stack<>();
@@ -43,8 +45,11 @@ public class ExpressionParser {
             parsedString.append(" ");
             parsedString.append(stack.pop());
         }
-        return parsedString.toString();
+        ArrayList<String> numbersOrArithmeticsOperations = new ArrayList<>(Arrays.asList(parsedString.toString().split(" ")));
+        numbersOrArithmeticsOperations.removeIf(number -> number == null || "".equals(number));
+        return numbersOrArithmeticsOperations;
     }
+
 
     private static int getPriority(char ch) {
 

@@ -1,16 +1,13 @@
 import Exceptions.DivisionByZero;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Stack;
 
 public class MathematicalCalculations {
-    public static double Calculations() throws DivisionByZero {
-        String reversePolandExpression = ExpressionParser.parseExpressionInReversePolandNotation(WorkWithTheConsole.getExpression());
-        ArrayList<String> numbersOrArithmeticsOperations = new ArrayList<>(Arrays.asList(reversePolandExpression.split(" ")));
-        numbersOrArithmeticsOperations.removeIf(item -> item == null || "".equals(item));
+    public static double Calculations(ArrayList<String> expression) throws DivisionByZero {
+        ArrayList<String> numbersOrArithmeticsOperations = new ArrayList<>(expression);
         Stack<Double> stackForCalculating = new Stack<>();
-        for (String numbersOrArithmeticsOperation : numbersOrArithmeticsOperations) {
+        for (String numbersOrArithmeticsOperation : numbersOrArithmeticsOperations)
             if (Validator.isNumber(numbersOrArithmeticsOperation)) {
                 stackForCalculating.push(Double.parseDouble(numbersOrArithmeticsOperation));
             } else {
@@ -31,7 +28,6 @@ public class MathematicalCalculations {
                         break;
                 }
             }
-        }
         double answer = stackForCalculating.pop();
         if (answer == Double.POSITIVE_INFINITY) {
             throw new DivisionByZero("Делить на ноль нельзя!!!");
