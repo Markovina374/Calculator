@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class MathematicalCalculations {
-    public static double Calculations() throws DivisionByZero {
+    public static double сalculations() throws DivisionByZero {
         String reversePolandExpression = ExpressionParser.parseExpressionInReversePolandNotation(WorkWithTheConsole.getExpression());
         ArrayList<String> numbersOrArithmeticsOperations = new ArrayList<>(Arrays.asList(reversePolandExpression.split(" ")));
         numbersOrArithmeticsOperations.removeIf(item -> item == null || "".equals(item));
